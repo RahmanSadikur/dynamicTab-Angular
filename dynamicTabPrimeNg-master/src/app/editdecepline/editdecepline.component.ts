@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import{EmitService} from '../emit.service'
 @Component({
   selector: 'app-editdecepline',
   templateUrl: './editdecepline.component.html',
@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditdeceplineComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private EmitService:EmitService ) { }
+show(){
+  this.EmitService.emit<string>("refresh");
+}
   ngOnInit(): void {
   }
 

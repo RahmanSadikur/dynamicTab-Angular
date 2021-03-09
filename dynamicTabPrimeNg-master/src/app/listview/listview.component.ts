@@ -9,9 +9,11 @@ import{EmitService} from '../emit.service'
 export class ListviewComponent implements OnInit {
 
   constructor(private EmitService:EmitService) { }
-
+ hello="sadik";
   ngOnInit(): void {
-
+this.EmitService.on<string>().subscribe(data=>{
+this.hello=data;
+});
   }
   addNewTab(data){
     this.EmitService.emit<string>(data);
