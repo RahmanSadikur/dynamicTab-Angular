@@ -1,0 +1,52 @@
+<div class="p-grid">
+  <div class="p-col-12 p-md-6 p-lg-2">
+    <ul>
+      <li>
+        <p-button
+          (click)="addNewTab('HR')"
+          label="HR"
+          styleClass="p-button-text"
+        ></p-button>
+      </li>
+      <li>
+        <p-button
+          (click)="addNewTab('Jahid Vi')"
+          label="Jahid Vi"
+          styleClass="p-button-text"
+        ></p-button>
+      </li>
+      <li>
+        <p-button
+          (click)="addNewTab('Raihan Vi')"
+          label="Raihan Vi"
+          styleClass="p-button-text"
+        ></p-button>
+      </li>
+      <li>
+        <p-button
+          (click)="addNewTab('Decepline')"
+          label="Decepline"
+          styleClass="p-button-text"
+        ></p-button>
+      </li>
+    </ul>
+  </div>
+  <div class="p-col-12 p-md-6 p-lg-10">
+    <p-tabView
+      (onClose)="removeTab($event)"
+      [(activeIndex)]="selectedTab"
+      [controlClose]="true"
+    >
+      <p-tabPanel
+        *ngFor="let tab of tabs"
+        [closable]="tab.close"
+        [header]="tab.title"
+        [selected]="tab.active"
+      >
+        <div>
+          <app-tab-content [tab]="tab"></app-tab-content>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
