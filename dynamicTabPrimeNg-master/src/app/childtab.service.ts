@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Tab } from './tab.model';
-import { BehaviorSubject, Observable,Subject } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import{ListviewComponent} from './listview/listview.component';
 
 
 @Injectable()
 export class ChildTabService {
   public tabs: Tab[] = [
-    new Tab(ListviewComponent, 'Dicepline', { parent: 'DeciplineComponent' }, false),
+    new Tab(ListviewComponent, 'Dashboard', { parent: 'DeciplineComponent' }, false),
   ];
 
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
@@ -42,11 +42,6 @@ export class ChildTabService {
     this.tabs.push(tab);
     this.tabSub.next(this.tabs);
   }
-  public _subject= new Subject <any>();
-  emit<T>(data:T){
-      this._subject.next(data);
-  }
-  on<T>():Observable<T>{
-      return this._subject.asObservable();
-  }
+
+
 }

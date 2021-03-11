@@ -12,7 +12,10 @@ export class ListviewComponent implements OnInit {
  hello="sadik";
   ngOnInit(): void {
 this.EmitService.on<string>().subscribe(data=>{
-this.hello=data;
+  if(data==="refresh"){
+    this.hello=data;
+  }
+
 });
   }
   addNewTab(data){

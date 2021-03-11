@@ -19,6 +19,9 @@ import { ListviewComponent } from './listview/listview.component';
 import {EmitService} from './emit.service';
 import {ChildTabService} from './childtab.service';
 import { from } from 'rxjs';
+import{EntryComponent}from './EntryComponent';
+import { DemoComponent } from './demo/demo.component';
+import { TestComponent } from './test/test.component'
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { from } from 'rxjs';
     DeciplineComponent,
     EditdeceplineComponent,
     ListviewComponent,
+    DemoComponent,
+    TestComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ import { from } from 'rxjs';
     TabViewModule,
     ButtonModule,
   ],
-  providers: [TabService,EmitService,ChildTabService],
+  providers: [TabService,EmitService,ChildTabService,EntryComponent],
   bootstrap: [AppComponent],
   entryComponents: [DashboardComponent]
 })

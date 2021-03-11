@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Tab} from '../tab.model';
 import{ChildTabService} from '../childtab.service'
-import {EditdeceplineComponent} from '../editdecepline/editdecepline.component';
-import{EmitService} from '../emit.service'
+//import {EditdeceplineComponent} from '../editdecepline/editdecepline.component';
+import{EmitService} from '../emit.service';
+import {EntryComponent} from '../EntryComponent'
 
 @Component({
   selector: 'app-decipline',
@@ -14,7 +15,7 @@ export class DeciplineComponent implements OnInit {
   title = 'dynamicTabPrimeNg';
   tabs = new Array<Tab>();
   selectedTab: number;
-  constructor(private ChildTabService: ChildTabService,private EmitService:EmitService) {
+  constructor(private ChildTabService: ChildTabService,private EmitService:EmitService,private entryComponent:EntryComponent) {
   }
   ngOnInit() {
     this.ChildTabService.tabSub.subscribe(tabs => {
@@ -27,14 +28,22 @@ export class DeciplineComponent implements OnInit {
   }
 
   addNewTab(componentName: string) {
-    if (componentName === 'Editdecepline')
-    {
+    // if (componentName === 'Editdecepline')
+    // {
+    //   this.ChildTabService.addTab(
+    //     new Tab(EditdeceplineComponent, 'Editdecepline', { parent: 'DeciplineComponent' }, true)
+    //   );
+    // } 
+
+    var tab=this.entryComponent.tab.find(t=>t.title===componentName);
+    console.log(tab);
+    if(tab !==undefined||tab!==null){
+     
       this.ChildTabService.addTab(
-        new Tab(EditdeceplineComponent, 'Editdecepline', { parent: 'DeciplineComponent' }, true)
-      );
+        tab
+       );
+
     }
-  
-   
     this.selectedTab = this.tabs.findIndex(tab => tab.active);
   }
 
